@@ -20,7 +20,7 @@ class Test
         if (!empty($result) && is_array($result)) {
         
             foreach ($result as &$item) {
-                $item['content'] = Yii::$app->stringHelper->getShort($item['content'], 60);
+                $item['content'] = Yii::$app->stringHelper->getShort($item['content']);
             }
         }
         
