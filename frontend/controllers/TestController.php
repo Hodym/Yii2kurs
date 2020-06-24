@@ -1,24 +1,38 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace frontend\controllers;
 
 use Yii;
 use yii\web\Controller;
 use frontend\models\Test;
+use frontend\models\exemple\ExampleValidation;
 /**
- * Description of TestController
- *
  * @author hodym
  */
 class TestController extends Controller 
 {
-    public function actionIndex()
+    public function actionValidation() 
+    {
+        $model = new ExampleValidation;
+        
+        $formData = Yii::$app->request->post();
+        
+        if (Yii::$app->request->isPost) {
+            
+            $model->attributes = $formData;
+            
+            if ($model->validate()) {
+                Yii::$app->session->setFlash('success', 'Data validated!');
+            }
+            
+        }
+
+        return $this->render('validation', [
+            'model' => $model,
+        ]);
+    }
+
+        public function actionIndex()
     {
         $max = Yii::$app->params['maxNewsInList'];
         

@@ -15,6 +15,7 @@ return [
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'enableCsrfValidation' => false,
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -50,4 +51,9 @@ return [
         ],
     ],
     'params' => $params,
+    'aliases' => [
+        '@files' => 'c:/ospanel/domains/yii2.loc/frontend/web/files',
+        '@photos' => '@files/photos',
+        '@images' => '/files/photos/',
+    ],
 ];
