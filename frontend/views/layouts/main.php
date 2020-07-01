@@ -41,8 +41,9 @@ AppAsset::register($this);
         ['label' => 'Publishers', 'url' => ['/publisher/index']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Register', 'url' => ['/user/signup']],
     ];
-    if (Yii::$app->user->isGuest) {
+    /*if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/user/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/user/login']];
     } else {
@@ -54,7 +55,7 @@ AppAsset::register($this);
             )
             . Html::endForm()
             . '</li>';
-    }
+    }*/
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,

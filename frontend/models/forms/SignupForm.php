@@ -9,17 +9,17 @@ use frontend\models\User;
 /**
  * Description of SignupForm
  *
- * @author admin
+ * @author hodym
  */
 class SignupForm extends Model
 {
-
     public $username;
     public $email;
     public $password;
     
+    
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
@@ -27,7 +27,7 @@ class SignupForm extends Model
             ['username', 'trim'],
             ['username', 'required'],
             ['username', 'string', 'min' => 2, 'max' => 255],
-            [['username'], 'unique', 'targetClass' => User::className()],
+            //[['username'], 'unique', 'targetClass' => User::className()],
             
             ['email', 'trim'],
             ['email', 'required'],
@@ -39,11 +39,7 @@ class SignupForm extends Model
             ['password', 'string', 'min' => 6],
         ];
     }
-    
-    /**
-     * Save user
-     * @return User|null
-     */
+
     public function save()
     {
         if ($this->validate()) {
@@ -59,6 +55,6 @@ class SignupForm extends Model
                 return $user;
             }         
         }
+        return false;
     }
-    
 }
