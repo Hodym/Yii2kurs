@@ -18,21 +18,25 @@ class EmailService extends Component
      * @param string $subject
      * @return bool
      */
-    public function notifyUser(UserNotificationInterface $user, $subject)
+    public function notifyUser(UserNotificationInterface $event)
     {
         return Yii::$app->mailer->compose()
                 ->setFrom('service.email@yii2frontend.com')
-                ->setTo($user->getEmail())
-                ->setSubject($subject)
+                ->setTo($event->getEmail())
+                ->setSubject($event->getSubject())
                 ->send();
     }
     
-    public function notifyAdmin($subject)
+    /**
+     * @param UserNotificationInterface $event
+     * @return bool
+     */
+    public function notifyAdmin(UserNotificationInterface $event)
     {
         return Yii::$app->mailer->compose()
                 ->setFrom('service.email@yii2frontend.com')
                 ->setTo('hodimchukdmitriy@gmail.com')
-                ->setSubject($subject)
+                ->setSubject($event->getSubject())
                 ->send();
     }
 }

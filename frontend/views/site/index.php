@@ -1,6 +1,5 @@
 <?php
 /* @var $this yii\web\View */
-
 use yii\helpers\Url;
 use frontend\widgets\newsList\NewsList;
 
