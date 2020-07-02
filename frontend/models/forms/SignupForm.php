@@ -56,8 +56,12 @@ class SignupForm extends Model
             $user->password_hash = Yii::$app->security->generatePasswordHash($this->password);
             
             if ($user->save()) {
+                
+                Yii::$app->emailService->notifyUser($user, 'Welcome!');
+                Yii::$app->emailService->notifyAdmin('User registered');
+                
                 return $user;
-            }         
+            }                 
         }
     }
     
