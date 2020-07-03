@@ -4,11 +4,19 @@ namespace frontend\controllers;
 
 use Yii;
 use frontend\models\Author;
+use frontend\controllers\behaviors\AccessBehavior;
 
 class AuthorController extends \yii\web\Controller
 {
-    public function actionCreate()
+    public function behaviors() 
     {
+        return [
+            AccessBehavior::className(),
+        ];
+    }
+
+        public function actionCreate()
+    {   
         $model = new Author();
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -51,5 +59,5 @@ class AuthorController extends \yii\web\Controller
             'model' => $model,
         ]);
     }
-
+    
 }
