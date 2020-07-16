@@ -17,7 +17,7 @@ class TestsController extends Controller
         /* @var $faker Faker\Generator */
         $faker = Factory::create();
         
-        for ($j = 0; $j < 100; $j++) {
+        for ($j = 0; $j < 10; $j++) {
             
             $news = [];
             for ($i = 0; $i < 100; $i++) {
